@@ -2,7 +2,6 @@ package adventure.collectworld;
 
 import adventure.dartgameworld.DartGameWorld;
 import javalib.funworld.World;
-import javalib.worldcanvas.*;
 import javalib.worldimages.*;
 
 public class CollectWorld extends World {
@@ -33,8 +32,38 @@ public class CollectWorld extends World {
     }
 
     public World onTick() {
-        return new CollectWorld(this.player.tick(), this.darts.tick(),
-                this.enemies.tick(), this.otherWorld, this.dartCount);
+        Player tp = this.player.tick();
+        Darts td = this.darts.tick();
+        Enemies te = this.enemies.tick();
+        
+        int px = tp.loc.x;
+        int py = tp.loc.y;
+        // this for-loop checks to see if the player picks up any darts
+        for (int i = 0; i < td.dartsArray.length; i++) {
+            Posn d = td.dartsArray[i];
+            if (px - 25 <= d.x && px + 25 >= d.x 
+                    && py - 32 <= d.y && py + 32 >= d.y) {
+                return new CollectWorld(tp, td.collect(i), te, 
+                        this.otherWorld, this.dartCount);
+            }
+        }
+        
+        // this for-loop checks to see if any enemy picks up any darts
+        Darts tdCollect = td;
+        for (int e = 0; e < te.enemyArray.length; e++) {
+            int ex = te.enemyArray[e].loc.x;
+            int ey = te.enemyArray[e].loc.y;
+            
+            for (int d = 0; d < td.dartsArray.length; d++) {
+                Posn dt = td.dartsArray[d];
+                if (ex - 50 <= dt.x && ex + 50 >= dt.x 
+                        && ey - 74 <= dt.y && ey + 74 >= dt.y) {
+                    tdCollect = tdCollect.collect(d);
+                }
+            }
+        }
+        
+        return new CollectWorld(tp, tdCollect, te, this.otherWorld, this.dartCount);
     }
 
     public WorldImage makeImage() {
@@ -52,13 +81,4 @@ public class CollectWorld extends World {
         }
     }
 
-//    public WorldEnd worldEnds() {
-//        WorldImage finalImage;
-//        
-//        if (gameOver) {
-//            return new WorldEnd(true, finalImage);
-//        } else {
-//            return new WorldEnd(false, finalImage);
-//        }
-//    }
 }

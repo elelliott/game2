@@ -50,5 +50,18 @@ public class Darts {
                 new OverlayImages(((WorldImage) new FromFileImage(dart2, img)),
                 ((WorldImage) new FromFileImage(dart3, img))));
     }
+    
+    Darts collect(int ind) {
+        Posn[] temp = new Posn[this.dartsArray.length];
+        for (int i = 0; i < temp.length; i++) {
+            if (i == ind) {
+                temp[i] = new Posn(randomizer.nextInt(WIDTH), randomizer.nextInt(HEIGHT));
+            } else {
+                temp[i] = this.dartsArray[i];
+            }
+        }
+        
+        return new Darts(temp);
+    }
 
 }

@@ -37,8 +37,8 @@ public class DartGameWorld extends World {
     public WorldImage makeImage() {
         return new OverlayImages(this.balloons.makeImage(),
                 ((WorldImage) new OverlayImages(this.pointer.makeImage(),
-                new TextImage(new Posn(WIDTH/2 - 100, HEIGHT - 25), 
-                        "Score: " + getScore(), new Black()))));
+                        new TextImage(new Posn(WIDTH / 2 - 100, HEIGHT - 25),
+                                "Score: " + getScore(), new Black()))));
     }
 
     public World onTick() {
@@ -84,7 +84,7 @@ public class DartGameWorld extends World {
         }
         return -1;
     }
-    
+
     double getScore() {
         return Math.round((this.numPopped / 1.0 / this.initDarts) * 100);
     }
