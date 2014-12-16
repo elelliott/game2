@@ -37,6 +37,6 @@ public class Enemies {
     }
 
     WorldImage makeImage() {
-        return this.makeImageHelp(this.enemyArray.length);
+        return this.makeImageHelp(this.enemyArray.length-1);
     }
 }

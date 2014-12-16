@@ -10,17 +10,17 @@ public class CollectWorld extends World {
     Player player;
     Darts darts;
     Enemies enemies;
-    World otherWorld;
-    int dartCount;
+    DartGameWorld otherWorld;
+    public int dartCount;
 
-    final int WIDTH = 500;
-    final int HEIGHT = 400;
+    final int WIDTH = 600;
+    final int HEIGHT = 450;
 
-    private CollectWorld(Player p, Darts d, Enemies e, World otherWorld, int c) {
+    private CollectWorld(Player p, Darts d, Enemies e, DartGameWorld w, int c) {
         this.player = p;
         this.darts = d;
         this.enemies = e;
-        this.otherWorld = otherWorld;
+        this.otherWorld = w;
         this.dartCount = c;
     }
 
@@ -28,7 +28,7 @@ public class CollectWorld extends World {
         this.player = new Player(new Posn(WIDTH / 2, HEIGHT / 2));
         this.darts = new Darts();
         this.enemies = new Enemies();
-        this.otherWorld = new DartGameWorld();
+        this.otherWorld = new DartGameWorld(this);
         this.dartCount = 0;
     }
 
@@ -45,7 +45,7 @@ public class CollectWorld extends World {
 
     public World onKeyEvent(String ke) {
         if (ke.equals("p")) {
-            return new DartGameWorld();
+            return new DartGameWorld(this);
         } else {
             return new CollectWorld(this.player.onKey(ke), this.darts,
                     this.enemies, this.otherWorld, this.dartCount);

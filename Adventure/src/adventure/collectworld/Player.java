@@ -6,8 +6,8 @@ public class Player {
     Posn loc;
     // (dx, dy)
     Posn dir;
-    final int WIDTH = 500;
-    final int HEIGHT = 400;
+    final int WIDTH = 600;
+    final int HEIGHT = 450;
     
     Player(Posn p) {
         this.loc = p;
