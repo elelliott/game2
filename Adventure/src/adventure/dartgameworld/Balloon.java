@@ -3,7 +3,7 @@ import javalib.worldimages.*;
 import java.util.Random;
 
 public class Balloon {
-    Posn loc;
+    public Posn loc;
     Posn dir;
     final int WIDTH = 600;
     final int HEIGHT = 450;

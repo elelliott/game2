@@ -2,7 +2,7 @@ package adventure.dartgameworld;
 import javalib.worldimages.*;
 
 public class Pointer {
-    Posn loc;
+    public Posn loc;
     final int WIDTH = 600;
     final int HEIGHT = 450;
     

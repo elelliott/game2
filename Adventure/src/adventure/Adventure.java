@@ -6,8 +6,8 @@ import javalib.worldimages.*;
 
 public class Adventure {
     
-    static final int WIDTH = 500;
-    static final int HEIGHT = 400;
+    static final int WIDTH = 600;
+    static final int HEIGHT = 450;
 
     public static void main(String[] args) {
         World collectWorld = new CollectWorld();

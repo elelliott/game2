@@ -3,7 +3,7 @@ import javalib.worldimages.*;
 
 public class Balloons {
     
-    Balloon[] ballArray;
+    public Balloon[] ballArray;
 
     Balloons() {
         this.ballArray = new Balloon[4];
@@ -36,5 +36,19 @@ public class Balloons {
     
     WorldImage makeImage() {
         return this.makeImageHelp(this.ballArray.length-1);
+    }
+    
+    Balloons pop(int ind) {
+        Balloon[] temp = new Balloon[this.ballArray.length];
+        
+        for (int i = 0; i < temp.length; i++) {
+            if (i == ind) {
+                temp[i] = new Balloon();
+            } else {
+                temp[i] = this.ballArray[i];
+            }
+        }
+        
+        return new Balloons(temp);
     }
 }
