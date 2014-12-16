@@ -1,4 +1,5 @@
 package adventure;
+import adventure.collectworld.CollectWorld;
 import javalib.funworld.World;
 import javalib.worldcanvas.*;
 import javalib.worldimages.*;
