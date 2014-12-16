@@ -44,7 +44,7 @@ public class CollectWorld extends World {
             if (px - 25 <= d.x && px + 25 >= d.x 
                     && py - 32 <= d.y && py + 32 >= d.y) {
                 return new CollectWorld(tp, td.collect(i), te, 
-                        this.otherWorld, this.dartCount);
+                        this.otherWorld, this.dartCount + 1);
             }
         }
         

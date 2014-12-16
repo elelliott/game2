@@ -15,13 +15,13 @@ public class Pointer {
     }
     
     Pointer onKey(String ke) {
-        if (ke.equals("up")) {
+        if (ke.equals("up") && this.loc.y - 2 >= 0) {
             return new Pointer(new Posn(this.loc.x, this.loc.y - 2));
-        } else if (ke.equals("down")) {
+        } else if (ke.equals("down") && this.loc.y + 2 <= HEIGHT) {
             return new Pointer(new Posn(this.loc.x, this.loc.y + 2));
-        } else if (ke.equals("left")) {
+        } else if (ke.equals("left") && this.loc.x - 2 >= 0) {
             return new Pointer(new Posn(this.loc.x - 2, this.loc.y));
-        } else if (ke.equals("right")) {
+        } else if (ke.equals("right") && this.loc.x + 2 <= WIDTH) {
             return new Pointer(new Posn(this.loc.x + 2, this.loc.y));
         } else {
             return this;
