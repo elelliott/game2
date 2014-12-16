@@ -1,6 +1,6 @@
 package adventure;
 
-import javalib.worldimages.Posn;
+import javalib.worldimages.*;
 import java.util.Random;
 
 public class Enemy {
@@ -74,5 +74,9 @@ public class Enemy {
                 return new Enemy(new Posn(newX, newY), this.dir);
         }
 
+    }
+    
+    WorldImage makeImage() {
+        return new FromFileImage(this.loc, "arobot.png");
     }
 }

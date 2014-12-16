@@ -34,7 +34,9 @@ public class CollectWorld extends World {
     }
 
     public WorldImage makeImage() {
-        return new FromFileImage(new Posn(WIDTH/2, HEIGHT/2), "dart.png");
+        return new OverlayImages(this.player.makeImage(),
+                ((WorldImage) new OverlayImages(this.enemies.makeImage(), 
+                        this.darts.makeImage())));
     }
 
     public World onKeyEvent(String ke) {

@@ -1,6 +1,5 @@
 package adventure;
-import javalib.worldimages.FromFileImage;
-import javalib.worldimages.Posn;
+import javalib.worldimages.*;
 
 public class Player {
     // (x, y)
@@ -49,5 +48,9 @@ public class Player {
         } else {
             return this;
         }
+    }
+    
+    WorldImage makeImage() {
+        return new FromFileImage(this.loc, "alady.png");
     }
 }
